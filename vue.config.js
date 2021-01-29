@@ -16,6 +16,11 @@ module.exports = {
       jquery: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
-    }])
+    }]),
+    config.devServer.proxy({
+      "/api": {
+        target: "http://47.110.74.37:7001/"
+      }
+    })
   }
 }

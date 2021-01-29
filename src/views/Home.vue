@@ -1,18 +1,59 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <list-block
+      title="正在热映">
+    </list-block>
+    <div class="spacing"></div>
+    <list-block
+      title="即将上映">
+    </list-block>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue'
+import ListBlock from '@/components/ListBlock.vue'
+import { useRequest } from '@/http/index'
+import { Movie } from '@/types/movie'
 
-@Options({
+interface Item {
+  count: number;
+  movies: Movie[];
+}
+
+interface RecommendData {
+  comming: Item;
+  playing: Item;
+}
+
+export default defineComponent({
   components: {
-    HelloWorld,
+    ListBlock
   },
+  setup () {
+    const initialData: RecommendData = {
+      comming: { count: 0, movies: [] },
+      playing: { count: 0, movies: [] }
+    }
+    const { data, loading } = useRequest("/api/movie/hot", undefined, {
+      initialData
+    });
+    console.log(data);
+    console.log(loading);
+    return {
+      data,
+      loading
+    }
+  }
 })
-export default class Home extends Vue {}
 </script>
+
+<style lang="less" scoped>
+.home {
+  .spacing {
+    width: 100%;
+    height: 10px;
+    background-color: rgb(249, 249, 249);
+  }
+}
+</style>

@@ -76,6 +76,9 @@ export default defineComponent({
 <style lang="less" scoped>
 #header {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 56px;
   line-height: 56px;

@@ -1,5 +1,8 @@
 <template>
   <the-header />
+  <div class="layout-content">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,5 +19,13 @@ export default defineComponent({
 <style lang="less">
 #app {
   min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: 56px;
+  font-family: Helvertca;
+  font-weight: 500;
+}
+.layout-content {
+  min-height: calc(100vh - 56px);
+  background-color: #fff;
 }
 </style>

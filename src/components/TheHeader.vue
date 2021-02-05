@@ -82,7 +82,7 @@ export default defineComponent({
   width: 100%;
   height: 56px;
   line-height: 56px;
-  background-color: @color-theme;
+  background-color: #1c2635;
   font-size: 16px;
   color: #606266;
   font-family: Helvetica;

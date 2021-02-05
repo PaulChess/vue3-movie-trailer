@@ -27,7 +27,7 @@ interface RequestConfig<T> extends AxiosRequestConfig {
 interface ReturnResult<T> {
   loading: Ref<boolean>;
   error: Ref<boolean>;
-  data: Ref<unknown>;
+  data: Ref<any>;
   fetch: () => Promise<void>;
 }
 
@@ -98,7 +98,6 @@ function useRequest<T>(...args: any[]): ReturnResult<T> {
           if (typeof onFail === "function") {
             onFail(result);
           }
-          // messaage.error
         }
         state.loading = false;
       })
